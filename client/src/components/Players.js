@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import PlayerList from 'PlayerList';
+import PlayerList from './PlayerList';
 
 class Players extends Component {
     state = {
@@ -23,7 +23,7 @@ class Players extends Component {
         console.log(this.state.players);
         return (
             <div>
-                <PlayerList/>
+                <PlayerList players={this.state.players}/>
             </div>
         );
     }
