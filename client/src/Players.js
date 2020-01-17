@@ -4,7 +4,8 @@ import PlayerList from './PlayerList';
 
 class Players extends Component {
     state = {
-        players: []
+        players: [],
+        count: 1
     };
 
     componentDidMount() {
@@ -19,11 +20,25 @@ class Players extends Component {
             })
     }
 
+    handleAdd = () => {
+        if (this.state.count < this.state.players.length) {
+            this.setState({count: this.state.count + 1});
+        }
+    };
+
+    handleRemove = () => {
+        if (this.state.count > 1) {
+            this.setState({count: this.state.count - 1});
+        }
+    };
+
     render() {
         console.log(this.state.players);
         return (
-            <div>
-                <PlayerList players={this.state.players}/>
+            <div data-testid="main-element">
+                <PlayerList players={this.state.players} count={this.state.count}/>
+                <button onClick={this.handleAdd}>Add Player</button>
+                <button onClick={this.handleRemove}>Remove Player</button>
             </div>
         );
     }
